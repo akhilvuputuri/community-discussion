@@ -51,9 +51,9 @@ class Qna extends Component {
         <nav className="side-nav-bar">
           <ul className="side-nav-links">
             <li className="side-nav-title-all">
-              <div href={`/questions/all`}>
+              <a href={`/questions/all`}>
                 All Questions
-              </div>
+              </a>
             </li>
           </ul>
           <ul className="side-nav-links">
