@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
-import Card from '@material-ui/core/Card';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class Qna extends Component {
@@ -32,20 +32,60 @@ class Qna extends Component {
     })
   }
 
+  renderTopics(topics) {
+    return (
+    <ul className="question-topics">
+      {topics.map(topic => 
+        <li key={topic} className="question-topic">
+          <a href={`/questions/${topic}`}>
+            {topic}
+          </a>
+        </li>)}
+    </ul>)
+  }
+
 
   render() {
-    console.log(this.state.topicsList)
-    console.log(this.state.questions)
     return (
-      <nav>
-        <ul className="side-nav-links">
-          <li>
-            <span className="side-nav-header">Featured Topics</span>
-          </li>
-          {this.state.topicsList.map(title => 
-          <li key={title} className="side-nav-title">{title}</li>)}
+      <div className="qna-root">
+        <nav className="side-nav-bar">
+          <ul className="side-nav-links">
+            <li className="side-nav-title-all">
+              <div href={`/questions/all`}>
+                All Questions
+              </div>
+            </li>
+          </ul>
+          <ul className="side-nav-links">
+            <li>
+              <span className="side-nav-header">Featured Topics</span>
+            </li>
+            {this.state.topicsList.map(title => 
+            <li key={title} className="side-nav-title">
+              <a href={`/questions/${title}`}>
+                {title}
+              </a>
+            </li>)}
+          </ul>
+        </nav>
+        <ul className="questions-main">
+          {this.state.questions.map(question => 
+          <li key={question.title} className="question-card">
+            <div className="question-topics question-part">
+              {this.renderTopics(question.topics)}
+            </div>
+            <div className="question-title question-part">
+              {question.title}
+            </div>
+            <div className="question-author question-part">
+              {question.author}
+            </div>
+            <div className="question-answer question-part">
+              {question.answer}
+            </div>
+          </li>)}
         </ul>
-      </nav>
+      </div>
     );
   }
 }
