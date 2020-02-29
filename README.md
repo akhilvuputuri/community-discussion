@@ -1,6 +1,6 @@
 1. Clone the repository onto your local machine
 
-2. Perform an `npm install`
+2. Perform an `npm install` to install dependencies
 
 3. Ensure that the server which is in the QuestionsServer repository is cloned and running on local server.
 
